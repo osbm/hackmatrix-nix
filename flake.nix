@@ -16,16 +16,30 @@
     };
 
     environment_packages = with pkgs; [
-      python312
-      python312Packages.google-api-python-client
-      python312Packages.google-auth-httplib2
-      python312Packages.google-auth-oauthlib
+      dmenu
+      zeromq
+      libX11
+      xorg.libXcomposite
+      sqlite
+      xorg.xwininfo
+      xdotool
+      protobuf
+      spdlog
+      assimp
+      glfw
+      xorg.libXfixes
+      libGl
+      xorg.libpthreadstubs
+      xorg.libXtst
+
     ];
   in {
-    packages."${system}".hackmatrix = pkgs.stdenv {
-      name = "hackmatrix";
-      
+    packages."${system}" = {
+      hackmatrix = pkgs.stdenv.mkDerivation {
+       name = "hackmatrix";
+      };
+      default = self.outputs.packages."${system}".hackmatrix;
     };
-
   };
 }
+

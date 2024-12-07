@@ -16,22 +16,24 @@
     };
 
     environment_packages = with pkgs; [
-      dmenu
-      zeromq
-      xorg.libX11
-      xorg.libXcomposite
-      sqlite
-      xorg.xwininfo
-      xdotool
-      protobuf
-      spdlog
-      assimp
-      glfw
-      xorg.libXfixes
-      libglvnd
-      xorg.libpthreadstubs
-      xorg.libXtst
-      spdlog
+      zeromq # libzmq
+      xorg.libX11 # libX11
+      xorg.libXcomposite # libXcomposite
+      xorg.libXtst # libXtst
+      xorg.libXext # libXext
+      xorg.libXfixes # libXfixes
+      protobuf # libprotobuf
+      spdlog # spdlog
+      # libfmt
+      glfw # glfw
+      libglvnd # libgl
+      xorg.libpthreadstubs # libpthread
+      assimp # assimp
+      sqlite # libsqlite3
+      xorg.xwininfo # x11-utils
+      xdotool # xdotool
+      protobufc # protobuf1
+      # base-devel # already included in stdenv i think
     ];
   in {
     packages."${system}" = {

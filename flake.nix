@@ -5,10 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { self , nixpkgs ,... }: let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
-        inherit system;
+      inherit system;
     };
 
     environment_packages = with pkgs; [
@@ -32,18 +36,17 @@
   in {
     packages."${system}" = {
       hackmatrix = pkgs.stdenv.mkDerivation {
-       name = "hackmatrix";
-       buildInputs = environment_packages;
-       src = pkgs.fetchFromGitHub {
-         owner = "collinalexbell";
-	 repo = "HackMatrix";
-	 rev = "v1.stable";
-	 fetchSubmodules = true;
-	 sha256 = "sha256-SBx2If5zxybyzrB+jMR2lkXWzePpqugKn/NppUCCstQ=";
-       };
+        name = "hackmatrix";
+        buildInputs = environment_packages;
+        src = pkgs.fetchFromGitHub {
+          owner = "collinalexbell";
+          repo = "HackMatrix";
+          rev = "v1.stable";
+          fetchSubmodules = true;
+          sha256 = "sha256-SBx2If5zxybyzrB+jMR2lkXWzePpqugKn/NppUCCstQ=";
+        };
       };
       default = self.outputs.packages."${system}".hackmatrix;
     };
   };
 }
-

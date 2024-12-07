@@ -3,10 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    hackmatrix = {
-      url = "github:collinalexbell/HackMatrix";
-      flake = false;
-    };
   };
 
   outputs = { self , nixpkgs ,... }: let

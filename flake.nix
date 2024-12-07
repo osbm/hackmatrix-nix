@@ -18,7 +18,7 @@
     environment_packages = with pkgs; [
       dmenu
       zeromq
-      libX11
+      xorg.libX11
       xorg.libXcomposite
       sqlite
       xorg.xwininfo
@@ -28,15 +28,16 @@
       assimp
       glfw
       xorg.libXfixes
-      libGl
+      libglvnd
       xorg.libpthreadstubs
       xorg.libXtst
-
     ];
   in {
     packages."${system}" = {
       hackmatrix = pkgs.stdenv.mkDerivation {
        name = "hackmatrix";
+       buildInputs = environment_packages;
+
       };
       default = self.outputs.packages."${system}".hackmatrix;
     };

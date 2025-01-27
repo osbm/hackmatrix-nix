@@ -37,13 +37,14 @@
           xdotool # xdotool
           protobufc # protobuf1
           # base-devel # already included in stdenv i think
+          tracy
+          xorg.xrandr
         ];
         src = pkgs.fetchFromGitHub {
           owner = "collinalexbell";
           repo = "HackMatrix";
-          rev = "v1.stable";
-          fetchSubmodules = true;
-          sha256 = "sha256-SBx2If5zxybyzrB+jMR2lkXWzePpqugKn/NppUCCstQ=";
+          rev = "7f0cecb92ef7ec3d4d25ce4d55b5d4c9af09c76f";
+          sha256 = "sha256-efReoUdINe70KCtjYvEBUySWSdvAkYJPUUwkql4lUjo=";
         };
       };
       default = self.outputs.packages."${system}".hackmatrix;
